@@ -28,7 +28,7 @@
         hyphen = '-',
         slash = '/',
         space = ' ',
-        star = '★',
+        star = '*',
         addRemoveText = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         changeWallpaperOffText = 'Change wallpaper: Off',
         changeWallpaperOnText = 'Change wallpaper: On',
@@ -50,12 +50,13 @@
         changeImageSiteText = 'Wallpaper host site:',
         closePopupTooltip = 'Close Popup',
         dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
-        defaultWallpaperTooltip = '1 - 35 and 0 for no wallpaper',
+        defaultWallpaperTooltip = '1 - 42 and 0 for no wallpaper',
         logoCenterTooltip = 'Reposition logo to top-center',
         logoLeftTooltip = 'Reposition Logo to Top-Left',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',
         settingOnTooltip = 'Setting to On will disable static wallpaper',
-        githubSite = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
+        githubSite = 'https://raw.githubusercontent.com/Razzano/Wallpaper/master/image',
+        //githubSite = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
         soncoSite = 'https://sonco.synthasite.com/resources/image',
         arrowRight = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAALCAYAAABcUvyWAAAAOUlEQVR42mP8//9/KCMj42oGNMAIlPgPpMPQJWESDOiSyBIokugScElsEhBJYnVgtQOrq7D6A6vPAa7ONF5AFsvcAAAAAElFTkSuQmCC',
         downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAuklEQVR42mNkoAFgHDWUPob+BwJGICCkGZc6XIamAamZ+AwGGQik0oFKZhFrKEj8LRALYjMYauB7IBYGSv8nOkyB+jyA1HawIiSDoQaCgCdQeAfRYYpkwBkgZQwzGMnAs0CuCS59hAzVB1JzYQbDDATiZKChF8kyFGrwSiAVhiS0CmhgOD49xBgqCaSuArEgAyRytIGGPqfIUKjB7UCqAog7gAZWElJPdI4CGrwfaKAjMWqHeN4fOYYCALmCRxW5rmXrAAAAAElFTkSuQmCC',
@@ -74,7 +75,7 @@
         dayno = DayNo.split(','),
         DayNum = '"",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31',
         daynum = DayNum.split(','),
-        DayOrd = '"",1ˢᵗ,2ⁿᵈ,3ʳᵈ,4ᵗʰ,5ᵗʰ,6ᵗʰ,7ᵗʰ,8ᵗʰ,9ᵗʰ,10ᵗʰ,11ᵗʰ,12ᵗʰ,13ᵗʰ,14ᵗʰ,15ᵗʰ,16ᵗʰ,17ᵗʰ,18ᵗʰ,19ᵗʰ,20ᵗʰ,21ˢᵗ,22ⁿᵈ,23ʳᵈ,24ᵗʰ,25ᵗʰ,26ᵗʰ,27ᵗʰ,28ᵗʰ,29ᵗʰ,30ᵗʰ,31ˢᵗ',
+        DayOrd = '"",1st,2nd,3rd,4th,5th,6th,7th,8th,9th,10th,11th,12th,13th,14th,15th,16th,17th,18th,19th,20th,21st,22nd,23rd,24th,25th,26th,27th,28th,29th,30th,31st',
         dayord = DayOrd.split(','),
         MonthName = 'January,February,March,April,May,June,July,August,September,October,November,December',
         monthname = MonthName.split(','),
@@ -112,7 +113,9 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
         //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld'),
+        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld'),
+        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_0d.gb_3a.gb_Od'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_2d.gb_4a.gb_Qd'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -173,7 +176,7 @@
     else ampm = '';
     switch (int) {
       // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, comma, hyphen, slash, space, star
-      case 1: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + star + space + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 ★ 12:34 AM
+      case 1: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + star + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
       case 4: return w + space + bullet + space + m + hyphen + d + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
@@ -344,10 +347,10 @@
     e.preventDefault();
     switch (e.target.id) {
       case 'buttonStatic': case 'buttonUp':
-        num > 34 ? num = 0 : num = parseInt(num + 1);
+        num > 42 ? num = 0 : num = parseInt(num + 1);
         break;
       case 'buttonDown':
-        num < 1 ? num = 35 : num = parseInt(num - 1);
+        num < 1 ? num = 43 : num = parseInt(num - 1);
     }
     inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
@@ -365,8 +368,8 @@
   function wallpaperInputChanger(e) {
     let inp = e.target.value;
     e.preventDefault();
-    if (inp > 35) {
-      inp = 35;
+    if (inp > 43) {
+      inp = 43;
       $q('#inputStatic').value = inp;
     }
     GM_setValue('wallpaperStaticImage', parseInt(inp));
@@ -531,7 +534,7 @@
     '  padding: 2px 8px 10px 8px !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
-    '  top: 4px !important;'+
+    '  top: 6px !important;'+
     '}'+
     '#gWP1 #gClock:hover + #dateTime {'+
     '  background: #900 !important;'+
@@ -556,13 +559,12 @@
     '  margin: auto !important;'+
     '  text-align: center !important;'+
     '}'+
-    '#gWP1 .gLFyf.gsfi {'+
+    '#gWP1 .gLFyf {'+
     '  color: #AAA !important;'+
     '  filter: brightness(2) !important;'+
     '  text-align: center !important;'+
-    '  margin-left: -37px !important;'+
     '}'+
-    '#gWP1 .gLFyf.gsfi:focus-within {'+
+    '#gWP1 .gLFyf:focus-within {'+
     '  text-align: left !important;'+
     '  margin-left: 0 !important;'+
     '}'+
@@ -603,12 +605,7 @@
     '  opacity: 1 !important;'+
     '}'+
     '#gWP1 .RNNXgb .Gdd5U {'+
-    '  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAAi0lEQVR42mNkwAP+AwE2cUYgwKWHkVTDCBnKiGTAKiAVykAeWA00PwxuICHXEAtArmZEchncFlIBihkw1+ELaCINhZhDdwOB0pFAKhrKXQpUtpxsA6GGLUMTjsJmKLEGbgFS3mjCW4FKfQaNgdT1MtUjhRRAewMZqJP1GBgpLGXQwWpYaUMNQ8E+BAAjRJs1dJgpYAAAAABJRU5ErkJggg==) !important;'+
     '  display: none !important;'+
-    '  height: 18px !important;'+
-    '  filter: opacity(.6) !important;'+
-    '  padding-left: 20px !important;'+
-    '  width: 0 !important;'+
     '}'+
     '#gWP1 .RNNXgb:hover .Gdd5U,'+
     '#gWP1 .RNNXgb:focus-within .Gdd5U {'+
@@ -638,6 +635,10 @@
     '#gWP1 .XDyW0e,'+
     '#gWP1 .cF4V5c g-menu-item:nth-child(8) {'+
     '  display: none !important;'+
+    '}'+
+    '#gWP1 .RNNXgb:hover .XDyW0e,'+
+    '#gWP1 .RNNXgb:focus-within .XDyW0e {'+
+    '  display: block !important;'+
     '}'+
     '#gWP1 .ErsxPb.dPaec {'+
     '  border: none !important;'+
