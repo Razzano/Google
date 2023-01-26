@@ -112,9 +112,6 @@
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
-        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
-        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld'),
-        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_0d.gb_3a.gb_Od'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_2d.gb_4a.gb_Qd'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
@@ -237,6 +234,7 @@
     body.appendChild(logoGoogle);
     div1.insertBefore(store, div1.firstChild);
     div1.insertBefore(about, div1.firstChild);
+    div1.style = 'background: rgba(0, 0, 0, .3); border-radius: 16px; padding: 0 4px 0 0';
     center.insertBefore(wallpaperBtn, center.childNodes[4]);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
