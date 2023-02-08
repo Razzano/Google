@@ -112,7 +112,7 @@
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_2d.gb_4a.gb_Qd'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_3d.gb_5a.gb_Rd'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -234,7 +234,7 @@
     body.appendChild(logoGoogle);
     div1.insertBefore(store, div1.firstChild);
     div1.insertBefore(about, div1.firstChild);
-    div1.style = 'background: rgba(0, 0, 0, .3); border-radius: 16px; padding: 0 4px 0 0';
+    div1.style = 'background: rgba(0, 0, 0, .3) !important; border-radius: 16px !important; padding: 0 4px 0 0 !important; text-shadow: 1px 1px 2px #000 !important;';
     center.insertBefore(wallpaperBtn, center.childNodes[4]);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
@@ -561,6 +561,7 @@
     '  color: #AAA !important;'+
     '  filter: brightness(2) !important;'+
     '  text-align: center !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
     '#gWP1 .gLFyf:focus-within {'+
     '  text-align: left !important;'+
@@ -616,6 +617,7 @@
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
     '  width: auto !important;'+
     '}'+
     '#gWP1 center > input {'+
@@ -675,7 +677,7 @@
     '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
-    '  bottom: 180px !important;'+
+    '  bottom: 185px !important;'+
     '  left: -56px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
