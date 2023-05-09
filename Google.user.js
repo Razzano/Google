@@ -115,7 +115,7 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
         //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_4d.gb_6a.gb_Sd'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Hd.gb_8a.gb_vd'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Md.gb_8a.gb_Ad'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -656,8 +656,13 @@
     '  border: none !important;'+
     '}'+
     '#gWP1 .UjBGL.pkWBse.iRQHZe {'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 6px !important;'+
     '  left: 1046px !important;'+
-    '  top: 1066px !important;'+
+    '  top: 1065px !important;'+
+    '}'+
+    '#gWP1 .cF4V5c.yTik0.wplJBd.PBn44e.iQXTJe {'+
+    '  border-radius: 6px !important;'+
     '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  display: none !important;'+
