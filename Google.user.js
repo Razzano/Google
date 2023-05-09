@@ -24,6 +24,8 @@
         am = 'AM',
         pm = 'PM',
         bullet = '•',
+        calendar = '📆',
+        clock = '🕑',
         comma = ',',
         hyphen = '-',
         slash = '/',
@@ -38,9 +40,9 @@
         setHeaderButtonsText = 'Set Header Buttons',
         hideShowText = bullet + ' Left-click to Hide/Show Date/Time',
         hourlyText = 'Hourly',
-        linksCurrentText = 'Links in current tab: True',
-        linksNewText = 'Links in new tab: True',
-        linksTooltip = 'Links in current tab or Links in new tab',
+        linksCurrentText = 'Header links in current tab: True',
+        linksNewText = 'Header links in new tab: True',
+        linksTooltip = 'Header links in current tab or in new tab',
         offText = 'Off',
         onText = 'On',
         wallpaperText = 'Wallpaper',
@@ -112,11 +114,13 @@
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_3d.gb_5a.gb_Rd'),
+        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_4d.gb_6a.gb_Sd'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Hd.gb_8a.gb_vd'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
+        //placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] #APjFqb'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span');
 
@@ -172,8 +176,8 @@
     if (GM_getValue('defaultAMPM')) hr < 12 ? ampm = am : ampm = pm;
     else ampm = '';
     switch (int) {
-      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, comma, hyphen, slash, space, star
-      case 1: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + star + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
+      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, calendar, clock, comma, hyphen, slash, space, star
+      case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
       case 4: return w + space + bullet + space + m + hyphen + d + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
@@ -181,8 +185,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 180/customFormatText + 181" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 183;
-      case 9: return customFormatText + 184;
+      case 8: return customFormatText + 186;
+      case 9: return customFormatText + 187;
   } }
 
   function dateTimeDefault() {
@@ -442,7 +446,9 @@
     '  background: transparent !important;'+
     '}'+
     '#gWP1 .o3j99.LLD4me.LS8OJ,'+
-    '#gWP1 .vcVZ7d {'+
+    '#gWP1 .vcVZ7d,'+
+    '#gWP1 input[name="btnI"],'+
+    '#gWP1 .nDcEnd {'+
     '  display: none !important;'+
     '}'+
     '#gWP1 .MV3Tnb {'+
@@ -465,7 +471,7 @@
     '  padding: 0 !important;'+
     '}'+
     '#gWP1 form {'+
-    '  margin-top: 100px !important;'+
+    '  margin-top: 120px !important;'+
     '}'+
     '#gWP1 #divWallpaper {'+
     '  display: inline-flex !important;'+
@@ -508,8 +514,12 @@
     '  margin: 0 4px 0 -11px !important;'+
     '  padding: 0 !important;'+
     '}'+
+    '#gWP1 .gb_0c {'+
+    '  margin-right: -10px !important;'+
+    '}'+
     '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+
+    '  margin-left: 4px !important;'+
     '}'+
     '#gWP1 #gClock {'+
     '  border-radius: 50% !important;'+
@@ -532,7 +542,7 @@
     '  padding: 2px 8px 10px 8px !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
-    '  top: 6px !important;'+
+    '  top: 4px !important;'+
     '}'+
     '#gWP1 #gClock:hover + #dateTime {'+
     '  background: #900 !important;'+
@@ -560,6 +570,7 @@
     '#gWP1 .gLFyf {'+
     '  color: #AAA !important;'+
     '  filter: brightness(2) !important;'+
+    '  margin-left: -36px !important;'+
     '  text-align: center !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
@@ -640,8 +651,13 @@
     '#gWP1 .RNNXgb:focus-within .XDyW0e {'+
     '  display: block !important;'+
     '}'+
-    '#gWP1 .ErsxPb.dPaec {'+
+    '#gWP1 .ErsxPb.dPaec,'+
+    '#gWP1 .EpPYLd.GZnQqe.LGiluc {'+
     '  border: none !important;'+
+    '}'+
+    '#gWP1 .UjBGL.pkWBse.iRQHZe {'+
+    '  left: 1046px !important;'+
+    '  top: 1066px !important;'+
     '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  display: none !important;'+
@@ -664,7 +680,7 @@
     '  margin: 5px 0 0 79px !important;'+
     '}'+
     '#gWP1 #gb > div > div[style*="width: 328px; z-index: 991;"] {'+
-    '  height: calc(-140px + 100vh) !important;'+
+    '  height: calc(-86px + 100vh) !important;'+
     '  margin-top: 49px !important;'+
     '}'+
     '#gWP1 #gb > div > div[style*="width: 372px; z-index: 991;"] {'+
@@ -912,3 +928,4 @@
   '');
 
 })();
+
