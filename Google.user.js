@@ -930,6 +930,22 @@
     '#gWP1 .o3j99.n1xJcf.Ne6nSd svg:hover {'+
     '  color: #FFF !important;'+
     '}'+
+    '#gWP1 .cF4V5c g-menu {'+
+    '  padding-bottom: 0 !important;'+
+    '}'+
+    '#gWP1 .cF4V5c g-menu-item:nth-child(6) span {'+
+    '  line-height: 30px !important;'+
+    '}'+
+    '#gWP1 .cF4V5c g-menu-item:nth-child(6) {'+
+    '  margin-bottom: -8px !important;'+
+    '}'+
+    '#gWP1 g-menu-item:hover {'+
+    '  background-color: #333 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 g-menu-item.EpPYLd.GZnQqe.LGiluc:hover {'+
+    '  background-color: none !important;'+
+    '}'+
   '');
 
 })();
