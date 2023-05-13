@@ -119,8 +119,7 @@
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
-        //placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] #APjFqb'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span');
 
