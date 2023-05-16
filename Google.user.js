@@ -115,7 +115,7 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
         //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_4d.gb_6a.gb_Sd'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Md.gb_8a.gb_Ad'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Ad.gb_8a.gb_pd'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -658,7 +658,7 @@
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  left: 1046px !important;'+
-    '  top: 1065px !important;'+
+    '  top: 1064px !important;'+
     '}'+
     '#gWP1 .cF4V5c.yTik0.wplJBd.PBn44e.iQXTJe {'+
     '  border-radius: 6px !important;'+
