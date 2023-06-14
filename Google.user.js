@@ -23,14 +23,16 @@
         dateTimeFormatCount = 9,
         am = 'AM',
         pm = 'PM',
+        asterisk = '*',
         bullet = '•',
         calendar = '📆',
         clock = '🕑',
+        colon = ':',
+        colons = '::',
         comma = ',',
         hyphen = '-',
         slash = '/',
         space = ' ',
-        star = '*',
         addRemoveText = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         changeWallpaperOffText = 'Change wallpaper: Off',
         changeWallpaperOnText = 'Change wallpaper: On',
@@ -114,8 +116,8 @@
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
-        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_4d.gb_6a.gb_Sd'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Ad.gb_8a.gb_pd'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] #gb > div'),
+        //div1 = $q('html[itemtype="http://schema.org/WebPage"] #gb > .gb_Dd.gb_eb.gb_sd'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -175,7 +177,7 @@
     if (GM_getValue('defaultAMPM')) hr < 12 ? ampm = am : ampm = pm;
     else ampm = '';
     switch (int) {
-      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, calendar, clock, comma, hyphen, slash, space, star
+      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: asterisk, bullet, calendar, clock, colon, colons, comma, hyphen, slash, space
       case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
@@ -183,9 +185,9 @@
       case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      // Delete "customFormatText + 180/customFormatText + 181" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 187;
-      case 9: return customFormatText + 188;
+      // Delete "customFormatText + 189" or "customFormatText + 190" text below and add RETURN OPTIONS with desired format and special characters.
+      case 8: return customFormatText + 189;
+      case 9: return customFormatText + 190;
   } }
 
   function dateTimeDefault() {
@@ -244,7 +246,7 @@
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
     dateTimeContainer.appendChild(btnClock);
     dateTimeContainer.appendChild(dateTime);
-    div1.appendChild(dateTimeContainer);
+    div1.insertBefore(dateTimeContainer, div1.lastChild);
     searchButton.id = 'gSearch';
     placeHolder.placeholder = placeHolderText;
     btnWhen.title = dailyHourlyTooltip;
@@ -433,11 +435,17 @@
 
   window.addEventListener('load', () => init());
   window.addEventListener('unload', () => onClose());
-
+/*
   initInterval = setInterval(() => {
     if (signIn) signIn.click();
-   else { init(); clearInterval(initInterval) }
+    else { init(); clearInterval(initInterval) }
     init(); clearInterval(initInterval)
+  }, openInterval);
+*/
+  initInterval = setInterval(() => {
+    if (signIn) signIn.click();
+    else if (!btnClock) init();
+    else { init(); clearInterval(initInterval) }
   }, openInterval);
 
   GM_addStyle(''+
@@ -518,13 +526,14 @@
     '}'+
     '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+
-    '  margin-left: 4px !important;'+
+    '  margin-left: 8px !important;'+
     '}'+
     '#gWP1 #gClock {'+
     '  border-radius: 50% !important;'+
     '  cursor: pointer !important;'+
     '  filter: grayscale(1) brightness(.65) !important;'+
     '  height: 40px !important;'+
+    '  margin: 0 6px 0 0 !important;'+
     '  width: 40px !important;'+
     '}'+
     '#gWP1 #dateTimeContainer > #dateTime {'+
@@ -536,7 +545,7 @@
     '  cursor: pointer !important;'+
     '  font: 16px monospace !important;'+
     '  height: 16px !important;'+
-    '  margin-left: 2px !important;'+
+    '  margin: 0 4px 0 0 !important;'+
     '  min-width: 100px !important;'+
     '  padding: 2px 8px 10px 8px !important;'+
     '  position: relative !important;'+
@@ -655,10 +664,12 @@
     '  border: none !important;'+
     '}'+
     '#gWP1 .UjBGL.pkWBse.iRQHZe {'+
+    '  background-color: #202020 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  left: 1046px !important;'+
-    '  top: 1064px !important;'+
+    '  padding: 4px 0 !important;'+
+    '  top: 1066px !important;'+
     '}'+
     '#gWP1 .cF4V5c.yTik0.wplJBd.PBn44e.iQXTJe {'+
     '  border-radius: 6px !important;'+
@@ -913,6 +924,9 @@
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #divThemer:hover > #themeImage {'+
+    /*'  opacity: 1 !important;'+*/
+    '}'+
+    '#gWP1 #themeImage {'+
     '  opacity: 1 !important;'+
     '}'+
     '#gWP1 #inputStatic::-webkit-inner-spin-button,'+
