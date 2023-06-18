@@ -89,9 +89,9 @@
         monthno = MonthNo.split(','),
         MonthNum = '1,2,3,4,5,6,7,8,9,10,11,12',
         monthnum = MonthNum.split(','),
-        logoGoogle = $c('span', {id: 'logoGoogle'}),
+        logoGoogle = $c('img', {id: 'logoGoogle', src: googleImage}),
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
-        btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
+        buttonClock = $c('img', {id: 'buttonClock', src: imgClock, title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
         wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: wallpaperText, onclick: e => wallpaperPopup(e)}),
         wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
@@ -244,9 +244,9 @@
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-    dateTimeContainer.appendChild(btnClock);
+    dateTimeContainer.appendChild(buttonClock);
     dateTimeContainer.appendChild(dateTime);
-    div1.insertBefore(dateTimeContainer, div1.lastChild);
+    body.appendChild(dateTimeContainer);
     searchButton.id = 'gSearch';
     placeHolder.placeholder = placeHolderText;
     btnWhen.title = dailyHourlyTooltip;
@@ -435,16 +435,10 @@
 
   window.addEventListener('load', () => init());
   window.addEventListener('unload', () => onClose());
-/*
+
   initInterval = setInterval(() => {
     if (signIn) signIn.click();
-    else { init(); clearInterval(initInterval) }
-    init(); clearInterval(initInterval)
-  }, openInterval);
-*/
-  initInterval = setInterval(() => {
-    if (signIn) signIn.click();
-    else if (!btnClock) init();
+    else if (!buttonClock) init();
     else { init(); clearInterval(initInterval) }
   }, openInterval);
 
@@ -466,13 +460,11 @@
     '  margin-right: -3px !important;'+
     '}'+
     '#gWP1 > #logoGoogle {'+
-    '  background: url('+ googleImage +') no-repeat !important;'+
-    '  border: none !important;'+
-    '  height: 164px !important;'+
+    '  height: 82px !important;'+
     '  left: 8px !important;'+
     '  position: absolute !important;'+
     '  top: 8px !important;'+
-    '  width: 512px !important;'+
+    '  width: 256px !important;'+
     '}'+
     '#gWP1 .om7nvf {'+
     '  padding: 0 !important;'+
@@ -526,18 +518,21 @@
     '}'+
     '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+
-    '  margin-left: 8px !important;'+
+    '  left: 280px !important;'+
+    '  position: absolute !important;'+
+    '  top: 13px !important;'+
+    '  z-index: 999 !important;'+
     '}'+
-    '#gWP1 #gClock {'+
+    '#gWP1 #buttonClock {'+
     '  border-radius: 50% !important;'+
     '  cursor: pointer !important;'+
-    '  filter: grayscale(1) brightness(.65) !important;'+
-    '  height: 40px !important;'+
+    /*'  filter: grayscale(1) brightness(.65) !important;'+*/
+    '  height: 32px !important;'+
     '  margin: 0 6px 0 0 !important;'+
-    '  width: 40px !important;'+
+    '  width: 32px !important;'+
     '}'+
     '#gWP1 #dateTimeContainer > #dateTime {'+
-    '  background-color: transparent !important;'+
+    '  background: rgba(0, 0, 0, .3) !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 8px !important;'+
     '  box-shadow: none !important;'+
@@ -550,19 +545,19 @@
     '  padding: 2px 8px 10px 8px !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
-    '  top: 4px !important;'+
+    '  top: 1px !important;'+
     '}'+
-    '#gWP1 #gClock:hover + #dateTime {'+
+    '#gWP1 #buttonClock:hover + #dateTime {'+
     '  background: #900 !important;'+
     '  border-color: #C00 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#gWP1 #dateTimeContainer:hover > #gClock {'+
-    '  filter: none !important;'+
-    '  opacity: .7 !important;'+
+    '#gWP1 #dateTimeContainer:hover > #buttonClock {'+
+    /*'  filter: none !important;'+
+    '  opacity: .7 !important;'+*/
     '}'+
-    '#gWP1 #dateTimeContainer:hover > #gClock:hover {'+
-    '  opacity: 1 !important;'+
+    '#gWP1 #dateTimeContainer:hover > #buttonClock:hover {'+
+    /*'  opacity: 1 !important;'+*/
     '}'+
     '#gWP1 #dateTimeContainer > #dateTime:hover {'+
     '  background-color: #181A1B !important;'+
