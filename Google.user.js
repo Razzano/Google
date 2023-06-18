@@ -123,7 +123,8 @@
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
-        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span');
+        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span'),
+        popup = $q('html[itemtype="http://schema.org/WebPage"] .UjBGL.pkWBse.iRQHZe');
 
   let clockInterval,
       initInterval,
@@ -186,8 +187,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 189" or "customFormatText + 190" text below and add RETURN OPTIONS with desired format and special characters.
-      case 8: return customFormatText + 189;
-      case 9: return customFormatText + 190;
+      case 8: return customFormatText + 190;
+      case 9: return customFormatText + 191;
   } }
 
   function dateTimeDefault() {
@@ -240,7 +241,7 @@
     div1.insertBefore(store, div1.firstChild);
     div1.insertBefore(about, div1.firstChild);
     div1.style = 'background: rgba(0, 0, 0, .3) !important; border-radius: 16px !important; padding: 0 4px 0 0 !important; text-shadow: 1px 1px 2px #000 !important;';
-    center.insertBefore(wallpaperBtn, center.childNodes[4]);
+    center.insertBefore(wallpaperBtn, center.firstChild);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
@@ -288,15 +289,23 @@
     wallpaperPop.appendChild(btnClose);
     center.appendChild(settingsBtn);
     center.appendChild(wallpaperPop);
+    onResize();
     searchPopupLinks();
     wallpaper();
   }
 
   function onClose() {
     window.removeEventListener('unload', () => onClose());
+    window.removeEventListener('resize', () => onResize());
     clearInterval(clockInterval);
     clearInterval(initInterval);
     clearInterval(wallpaperInterval);
+  }
+
+  function onResize() {
+    let width = (window.innerWidth / 2) - (logoGoogle.clientWidth / 2) + 'px';
+    logoGoogle.style = 'left: ' + width;
+    popup.style = 'left: ' + width;
   }
 
   function searchLinksWhere(e) {
@@ -434,6 +443,7 @@
   wallpaperTimer(GM_getValue('themeChanger'));
 
   window.addEventListener('load', () => init());
+  window.addEventListener('resize', () => onResize());
   window.addEventListener('unload', () => onClose());
 
   initInterval = setInterval(() => {
@@ -461,7 +471,6 @@
     '}'+
     '#gWP1 > #logoGoogle {'+
     '  height: 82px !important;'+
-    '  left: 8px !important;'+
     '  position: absolute !important;'+
     '  top: 8px !important;'+
     '  width: 256px !important;'+
@@ -470,7 +479,7 @@
     '  padding: 0 !important;'+
     '}'+
     '#gWP1 form {'+
-    '  margin-top: 120px !important;'+
+    '  margin-top: 156px !important;'+
     '}'+
     '#gWP1 #divWallpaper {'+
     '  display: inline-flex !important;'+
@@ -518,7 +527,7 @@
     '}'+
     '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+
-    '  left: 280px !important;'+
+    '  left: 13px !important;'+
     '  position: absolute !important;'+
     '  top: 13px !important;'+
     '  z-index: 999 !important;'+
@@ -526,7 +535,6 @@
     '#gWP1 #buttonClock {'+
     '  border-radius: 50% !important;'+
     '  cursor: pointer !important;'+
-    /*'  filter: grayscale(1) brightness(.65) !important;'+*/
     '  height: 32px !important;'+
     '  margin: 0 6px 0 0 !important;'+
     '  width: 32px !important;'+
@@ -571,6 +579,7 @@
     '  text-align: center !important;'+
     '}'+
     '#gWP1 .gLFyf {'+
+    '  background: rgba(0, 0, 0, .3) !important;'+
     '  color: #AAA !important;'+
     '  filter: brightness(2) !important;'+
     '  margin-left: -36px !important;'+
@@ -662,9 +671,8 @@
     '  background-color: #202020 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
-    '  left: 1046px !important;'+
     '  padding: 4px 0 !important;'+
-    '  top: 1066px !important;'+
+    '  top: 1102px !important;'+
     '}'+
     '#gWP1 .cF4V5c.yTik0.wplJBd.PBn44e.iQXTJe {'+
     '  border-radius: 6px !important;'+
@@ -704,7 +712,7 @@
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  bottom: 185px !important;'+
-    '  left: -56px !important;'+
+    '  left: -135px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+
@@ -917,9 +925,6 @@
     '  background: #000 !important;'+
     '  border-color: #999 !important;'+
     '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 #divThemer:hover > #themeImage {'+
-    /*'  opacity: 1 !important;'+*/
     '}'+
     '#gWP1 #themeImage {'+
     '  opacity: 1 !important;'+
