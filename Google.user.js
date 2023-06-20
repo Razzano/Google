@@ -599,6 +599,9 @@
     '#gWP1 .RNNXgb:focus-within .iblpc {'+
     '  opacity: 1 !important;'+
     '}'+
+    '#gWP1 .RNNXgb {'+
+    '  max-width: 200px !important;'+
+    '}'+
     '#gWP1 .RNNXgb,'+
     '#gWP1 #gSearch {'+
     '  background: transparent !important;'+
@@ -620,6 +623,7 @@
     '  background-color: rgba(0, 0, 0, .5) !important;'+
     '  border-color: #777 !important;'+
     '  color: #FFF !important;'+
+    '  max-width: 584px !important;'+
     '}'+
     '#gWP1 .RNNXgb:hover .iblpc,'+
     '#gWP1 .RNNXgb:focus-within .iblpc {'+
