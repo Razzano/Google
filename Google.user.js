@@ -4,8 +4,7 @@
 // @version      1.0.1
 // @description  Layout and Theme
 // @author       Sonny Razzano a.k.a. srazzano
-// @match        https://www.google.com
-// @match        https://www.google.com/?pli=1
+// @match        https://www.google.com*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -187,8 +186,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 189" or "customFormatText + 190" text below and add RETURN OPTIONS with desired format and special characters.
-      case 8: return customFormatText + 190;
-      case 9: return customFormatText + 191;
+      case 8: return customFormatText + 189;
+      case 9: return customFormatText + 190;
   } }
 
   function dateTimeDefault() {
@@ -671,6 +670,7 @@
     '  background-color: #202020 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
+    '  margin-left: 36px !important;'+
     '  padding: 4px 0 !important;'+
     '  top: 1102px !important;'+
     '}'+
