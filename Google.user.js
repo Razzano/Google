@@ -712,7 +712,7 @@
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  bottom: 185px !important;'+
-    '  left: -135px !important;'+
+    '  left: -115px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+
