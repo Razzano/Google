@@ -178,7 +178,7 @@
     else ampm = '';
     switch (int) {
       // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: asterisk, bullet, calendar, clock, colon, colons, comma, hyphen, slash, space
-      case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
+      case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday 📆 March 1st, 2021 🕑 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
       case 4: return w + space + bullet + space + m + hyphen + d + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
@@ -559,13 +559,13 @@
     '  border-color: #C00 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#gWP1 #dateTimeContainer:hover > #buttonClock {'+
-    /*'  filter: none !important;'+
-    '  opacity: .7 !important;'+*/
+    /*'#gWP1 #dateTimeContainer:hover > #buttonClock {'+
+    '  filter: none !important;'+
+    '  opacity: .7 !important;'+
     '}'+
     '#gWP1 #dateTimeContainer:hover > #buttonClock:hover {'+
-    /*'  opacity: 1 !important;'+*/
-    '}'+
+    '  opacity: 1 !important;'+
+    '}'+*/
     '#gWP1 #dateTimeContainer > #dateTime:hover {'+
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
