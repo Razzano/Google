@@ -701,13 +701,6 @@
     '  border: 1px solid #666 !important;'+
     '  margin: 5px 0 0 79px !important;'+
     '}'+
-    '#gWP1 #gb > div > div[style*="width: 328px; z-index: 991;"] {'+
-    '  height: calc(-86px + 100vh) !important;'+
-    '  margin-top: 49px !important;'+
-    '}'+
-    '#gWP1 #gb > div > div[style*="width: 372px; z-index: 991;"] {'+
-    '  margin-top: 49px !important;'+
-    '}'+
     '#gWP1 .xtSCL {'+
     '  margin: 0 !important;'+
     '}'+
@@ -962,6 +955,10 @@
     '}'+
     '#gWP1 g-menu-item.EpPYLd.GZnQqe.LGiluc:hover {'+
     '  background-color: none !important;'+
+    '}'+
+    '#gWP1 #gb > div > div[style*="width: 370px; z-index: 991; height: 470px"] {'+
+    '  height: calc(-86px + 100vh) !important;'+
+    '  margin-top: 49px !important;'+
     '}'+
   '');
 
