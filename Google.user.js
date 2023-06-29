@@ -471,7 +471,7 @@
     '#gWP1 > #logoGoogle {'+
     '  height: 82px !important;'+
     '  position: absolute !important;'+
-    '  top: 8px !important;'+
+    '  top: 4px !important;'+
     '  width: 256px !important;'+
     '}'+
     '#gWP1 .om7nvf {'+
@@ -619,7 +619,7 @@
     '#gWP1 #gSearch:hover,'+
     '#gWP1 #submit:hover,'+
     '#gWP1 center > input:hover {'+
-    '  background-color: rgba(0, 0, 0, .5) !important;'+
+    '  background: rgba(0, 0, 0, .5) !important;'+
     '  border-color: #777 !important;'+
     '  color: #FFF !important;'+
     '  max-width: 584px !important;'+
@@ -671,12 +671,12 @@
     '  border: none !important;'+
     '}'+
     '#gWP1 .UjBGL.pkWBse.iRQHZe {'+
-    '  background-color: #202020 !important;'+
+    '  background-color: rgb(19, 21, 22) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  margin-left: 36px !important;'+
     '  padding: 4px 0 !important;'+
-    '  top: 1102px !important;'+
+    '  top: 1090px !important;'+
     '}'+
     '#gWP1 .cF4V5c.yTik0.wplJBd.PBn44e.iQXTJe {'+
     '  border-radius: 6px !important;'+
