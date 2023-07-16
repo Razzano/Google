@@ -4,7 +4,7 @@
 // @version      1.0.1
 // @description  Layout and Theme
 // @author       Sonny Razzano a.k.a. srazzano
-// @match        https://www.google.com*
+// @match        https://www.google.com/*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -605,14 +605,11 @@
     '#gWP1 .RNNXgb:focus-within .gLFyf {'+
     '  text-align: left !important;'+
     '  margin-left: 0 !important;'+
+    '  max-width: 584px !important;'+
     '}'+
     '#gWP1 .RNNXgb:hover .iblpc,'+
     '#gWP1 .RNNXgb:focus-within .iblpc {'+
     '  opacity: 1 !important;'+
-    '}'+
-    '#gWP1 .RNNXgb:hover,'+
-    '#gWP1 .RNNXgb:focus-within {'+
-    '  max-width: 584px !important;'+
     '}'+
     '#gWP1 .RNNXgb:hover,'+
     '#gWP1 .RNNXgb:focus-within,'+
