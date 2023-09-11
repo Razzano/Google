@@ -109,8 +109,8 @@
         btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, onclick: e => wallpaperButtonChanger(e)}),
         inpStatic = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 35, oninput: e => wallpaperInputChanger(e)}),
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, onclick: e => wallpaperButtonChanger(e)}),
-        spnSites = $c('button', {id: 'spanSites', onclick: e => wallpaperSite(e)}),
-        btnSites = $c('button', {id: 'buttonSites', onclick: e => wallpaperSite(e)}),
+        spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
+        btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
@@ -119,7 +119,7 @@
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] textarea[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span'),
         popup = $q('html[itemtype="http://schema.org/WebPage"] .UjBGL.pkWBse.iRQHZe');
@@ -177,7 +177,7 @@
     else ampm = '';
     switch (int) {
       // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: asterisk, bullet, calendar, clock, colon, colons, comma, hyphen, slash, space
-      case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday 📆 March 1st, 2021 🕑 12:34 AM
+      case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday ?? March 1st, 2021 ?? 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
       case 4: return w + space + bullet + space + m + hyphen + d + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
