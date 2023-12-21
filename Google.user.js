@@ -670,6 +670,7 @@
     '}'+
     '#gWP1 .ayzqOc.pHiOh {'+
     '  color: #AAA !important;'+
+    '  padding-right: 15px !important;'+
     '  text-decoration: none !important;'+
     '}'+
     '#gWP1 .ayzqOc.pHiOh:hover {'+
