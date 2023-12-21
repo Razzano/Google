@@ -115,9 +115,8 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] #gb > div'),
-        //div1 = $q('html[itemtype="http://schema.org/WebPage"] #gb > .gb_Dd.gb_eb.gb_sd'),
-        about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
-        store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
+        //div1 = $q('html[itemtype="http://schema.org/WebPage"] #gb > .gb_vd.gb_9a.gb_kd'),
+        howworks = $q('html[itemtype="http://schema.org/WebPage"] .pHiOh:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] textarea[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
@@ -236,8 +235,7 @@
     window.removeEventListener('load', () => init());
     body.id = 'gWP1';
     body.appendChild(logoGoogle);
-    div1.insertBefore(store, div1.firstChild);
-    div1.insertBefore(about, div1.firstChild);
+    div1.insertBefore(howworks, div1.firstChild);
     div1.style = 'background: rgba(0, 0, 0, .3) !important; border-radius: 16px !important; padding: 0 4px 0 0 !important; text-shadow: 1px 1px 2px #000 !important;';
     center.insertBefore(wallpaperBtn, center.firstChild);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
@@ -456,13 +454,9 @@
     '  display: none !important;'+
     '}'+
     '#gWP1 .MV3Tnb {'+
-    '  margin: -1px 0 0 8px !important;'+
-    '  padding: 4px !important;'+
+    '  display: none !important;'+
     '}'+
-    '#gWP1 .MV3Tnb:last-of-type {'+
-    '  margin-right: -3px !important;'+
-    '}'+
-        '#gWP1 #dateTimeContainer {'+
+    '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+
     '  left: 13px !important;'+
     '  position: absolute !important;'+
@@ -698,6 +692,7 @@
     '  position: relative !important;'+
     '  text-align: left !important;'+
     '  width: 250px !important;'+
+    '  z-index: 9 !important;'+
     '}'+
     '#gWP1 #gWallpaperPopup > .popDiv {'+
     '  padding: 2px !important;'+
@@ -948,6 +943,13 @@
     '#gWP1 #gb > div > div[style*="width: 370px; z-index: 991; height: 470px"] {'+
     '  height: calc(-86px + 100vh) !important;'+
     '  margin-top: 49px !important;'+
+    '}'+
+    '#gWP1 .pHiOh,'+
+    '#gWP1 a.gb_C {'+
+    '  padding-right: 0px !important;'+
+    '}'+
+    '#gWP1 a.gb_d.gb_Aa.gb_D {'+
+    '  margin-left: 0px !important;'+
     '}'+
   '');
 
