@@ -188,8 +188,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 189" or "customFormatText + 190" text below and add RETURN OPTIONS with desired format and special characters.
-      case 8: return customFormatText + 187;
-      case 9: return customFormatText + 188;
+      case 8: return customFormatText + 191;
+      case 9: return customFormatText + 192;
   } }
 
   function dateTimeDefault() {
@@ -963,6 +963,16 @@
     '}'+
     '#gWP1 #gbwa > div > a:hover > svg {'+
     '  fill: #FFF !important;'+
+    '}'+
+    '#gWP1 .pHiOh {'+
+    '  padding-right: 0px !important;'+
+    '  position: relative !important;'+
+    '  top: 0 !important;'+
+    '}'+
+    '#gWP1 a.pHiOh::before {'+
+    '  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAOdJREFUOE+lkj1ywjAQhb/X4yqhg5ukCCWuMgMl3ME5CblDKKFNyuQOOULogAr6TcRIHlnYHnusSj+rb9/bXREtM5sAS+AJeADOQCHpEMfFe4WDma2A94bAtaRt3dsNkHzOgZ8o+NfvayHyskPQWNIpsfUIHP3dNLXjALv/jAvg7jGy52rjkuwluRqVywG+gOeOgG9JsxQwWEEBbIBc0mddpc1sDnwAr5LeUgXBn7vvX8TBbew6SL5TL5LK4XN/K4e2UTYzC8liSAXQNO/e5gi4RDGZpGtnQCOkLWtDSytKeimICh4g2R8nwnUfSvaudQAAAABJRU5ErkJggg==) !important;'+
+    '  position: relative !important;'+
+    '  top: 3px !important;'+
     '}'+
   '');
 
