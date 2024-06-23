@@ -330,12 +330,12 @@
         if (GM_getValue('changeThemeHourly')) {
           hour === 0 ? hour = 24 : hour = hour;
           GM_setValue('wallpaperImage', hour);
-          body.style.background = 'url('+ GM_getValue('imageSite') + hour +'.jpg) no-repeat center center / cover';
+          body.style.background = 'url('+ GM_getValue('imageSite') + hour +'.jpg) center center / cover no-repeat';
           btnThemer.title = activeWallpaperTooltip + hour + '\n' + settingOffTooltip;
         } else {
           day = daynum[day];
           GM_setValue('wallpaperImage', day);
-          body.style.background = 'url('+ GM_getValue('imageSite') + day +'.jpg) no-repeat center center / cover';
+          body.style.background = 'url('+ GM_getValue('imageSite') + day +'.jpg) center center / cover no-repeat';
           btnThemer.title = activeWallpaperTooltip + day + '\n' + settingOffTooltip;
         }
         btnThemer.innerHTML = changeWallpaperOnText;
@@ -344,7 +344,7 @@
         divNumber.style = 'opacity: .5; pointer-events: none';
       } else {
         if (GM_getValue('wallpaperStaticImage') === 0) body.style.background = 'initial';
-        else body.style.background = 'url('+ GM_getValue('imageSite') + GM_getValue('wallpaperStaticImage') +'.jpg) no-repeat center center / cover';
+        else body.style.background = 'url('+ GM_getValue('imageSite') + GM_getValue('wallpaperStaticImage') +'.jpg) center center / cover no-repeat';
         btnThemer.innerHTML = changeWallpaperOffText;
         btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperStaticImage') + '\n' + settingOnTooltip;
         btnWhen.style = 'opacity: .5; pointer-events: none';
@@ -592,9 +592,10 @@
     '  box-shadow: none !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
-    '#gWP1 .RNNXgb .gLFyf {'+
+    '#gWP1 .RNNXgb textarea.gLFyf {'+
     '  color: #FFF !important;'+
     '  filter: brightness(1.5) !important;'+
+    '  max-width: 130px !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
     '#gWP1 .RNNXgb:hover,'+
