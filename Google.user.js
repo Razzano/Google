@@ -444,7 +444,8 @@
   initInterval = setInterval(() => {
     if (signIn) signIn.click();
     else if (!buttonCalendar) init();
-    else { init(); clearInterval(initInterval) }
+    else { init(); clearInterval(initInterval);
+    wallpaper(); }
   }, openInterval);
 
   GM_addStyle(''+
@@ -732,6 +733,7 @@
     '#gWP1 #divSites {'+
     '  border-radius: 0 0 6px 6px !important;'+
     '  margin-top: 2px !important;'+
+    '  pointer-events: none !important;'+
     '}'+
     '#gWP1 #gWallpaperPopup > .popDiv:hover {'+
     '  background: #333 !important;'+
