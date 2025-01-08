@@ -132,8 +132,10 @@
 
   function $c(type, props) {
     let node = document.createElement(type);
+    try {
     if (props && typeof props == 'object') for (let prop in props) typeof node[prop] == 'undefined' ? node.setAttribute(prop, props[prop]) : node[prop] = props[prop];
     return node;
+    } catch(ex) {}
   }
 
   function $i(newNode, refNode) {
@@ -238,57 +240,59 @@
   function init() {
     window.removeEventListener('load', () => init());
     body.id = 'gWP1';
-    body.appendChild(logoGoogle);
-    div1.insertBefore(howworks, div1.firstChild);
-    div1.style = 'background: rgba(0, 0, 0, .3) !important; border-radius: 16px !important; padding: 0 4px 0 0 !important; text-shadow: 1px 1px 2px #000 !important;';
-    center.insertBefore(wallpaperBtn, center.firstChild);
-    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-    else { dateTime.hidden = true; clearInterval(clockInterval) }
-    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-    dateTimeContainer.appendChild(buttonCalendar);
-    dateTimeContainer.appendChild(dateTime);
-    body.appendChild(dateTimeContainer);
-    searchButton.id = 'gSearch';
-    placeHolder.placeholder = placeHolderText;
-    btnWhen.title = dailyHourlyTooltip;
-    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-    if (GM_getValue('themeChanger')) {
-      btnThemer.innerHTML = changeWallpaperOnText;
-      btnWhen.style = 'opacity: 1; pointer-events: all';
-      themeImage.src = themeOn;
-    } else {
-      btnThemer.innerHTML = changeWallpaperOffText;
-      btnWhen.style = 'opacity: .5; pointer-events: none';
-      themeImage.src = themeOff;
-    }
-    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-    else btnSites.innerHTML = 'Sonco';
-    btnStatic.textContent = defaultWallpaperText;
-    btnStatic.title = defaultWallpaperTooltip;
-    inpStatic.value = GM_getValue('wallpaperStaticImage');
-    divThemer.appendChild(btnThemer);
-    divThemer.appendChild(btnWhen);
-    divThemer.appendChild(themeImage);
-    spanThemer.appendChild(divThemer);
-    divNumber.appendChild(btnStatic);
-    divNumber.appendChild(btnUp);
-    divNumber.appendChild(inpStatic);
-    divNumber.appendChild(btnDown);
-    spanNumber.appendChild(divNumber);
-    divLinks.appendChild(btnSearchLinks);
-    spanLinks.appendChild(divLinks);
-    spnSites.innerHTML = changeImageSiteText;
-    divSites.appendChild(spnSites);
-    divSites.appendChild(btnSites);
-    spanSites.appendChild(divSites);
-    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-    wallpaperPop.appendChild(divThemer);
-    wallpaperPop.appendChild(divNumber);
-    wallpaperPop.insertBefore(divLinks, wallpaperPop.firstChild);
-    wallpaperPop.appendChild(divSites);
-    wallpaperPop.appendChild(btnClose);
-    center.appendChild(settingsBtn);
-    center.appendChild(wallpaperPop);
+    try {
+      body.appendChild(logoGoogle);
+      div1.insertBefore(howworks, div1.firstChild);
+      div1.style = 'background: rgba(0, 0, 0, .3) !important; border-radius: 16px !important; padding: 0 4px 0 0 !important; text-shadow: 1px 1px 2px #000 !important;';
+      center.insertBefore(wallpaperBtn, center.firstChild);
+      if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+      else { dateTime.hidden = true; clearInterval(clockInterval) }
+      dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+      dateTimeContainer.appendChild(buttonCalendar);
+      dateTimeContainer.appendChild(dateTime);
+      body.appendChild(dateTimeContainer);
+      searchButton.id = 'gSearch';
+      placeHolder.placeholder = placeHolderText;
+      btnWhen.title = dailyHourlyTooltip;
+      GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+      if (GM_getValue('themeChanger')) {
+        btnThemer.innerHTML = changeWallpaperOnText;
+        btnWhen.style = 'opacity: 1; pointer-events: all';
+        themeImage.src = themeOn;
+      } else {
+        btnThemer.innerHTML = changeWallpaperOffText;
+        btnWhen.style = 'opacity: .5; pointer-events: none';
+        themeImage.src = themeOff;
+      }
+      if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+      else btnSites.innerHTML = 'Sonco';
+      btnStatic.textContent = defaultWallpaperText;
+      btnStatic.title = defaultWallpaperTooltip;
+      inpStatic.value = GM_getValue('wallpaperStaticImage');
+      divThemer.appendChild(btnThemer);
+      divThemer.appendChild(btnWhen);
+      divThemer.appendChild(themeImage);
+      spanThemer.appendChild(divThemer);
+      divNumber.appendChild(btnStatic);
+      divNumber.appendChild(btnUp);
+      divNumber.appendChild(inpStatic);
+      divNumber.appendChild(btnDown);
+      spanNumber.appendChild(divNumber);
+      divLinks.appendChild(btnSearchLinks);
+      spanLinks.appendChild(divLinks);
+      spnSites.innerHTML = changeImageSiteText;
+      divSites.appendChild(spnSites);
+      divSites.appendChild(btnSites);
+      spanSites.appendChild(divSites);
+      btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
+      wallpaperPop.appendChild(divThemer);
+      wallpaperPop.appendChild(divNumber);
+      wallpaperPop.insertBefore(divLinks, wallpaperPop.firstChild);
+      wallpaperPop.appendChild(divSites);
+      wallpaperPop.appendChild(btnClose);
+      center.appendChild(settingsBtn);
+      center.appendChild(wallpaperPop);
+    } catch(ex) {}
     onResize();
     searchPopupLinks();
     wallpaper();
@@ -460,7 +464,9 @@
     '#gWP1 input[name="btnI"],'+
     '#gWP1 .nDcEnd,'+
     '#gWP1 .goxjub,'+
-    '#gWP1 > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf.emcav > div.RNNXgb > div > div.dRYYxd > div.XDyW0e {'+
+    '#gWP1 > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf.emcav > div.RNNXgb > div > div.dRYYxd > div.XDyW0e,'+
+    '#gWP1 promo-middle-slot > div,'+
+    '#gWP1 .KxwPGc {'+
     '  display: none !important;'+
     '}'+
     '#gWP1 > .gb_l,'+
